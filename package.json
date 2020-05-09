@@ -1,8 +1,8 @@
 {
-  "name": "moblie-hack",
+  "name": "mobile-hack",
   "version": "0.0.1",
-  "main": "/lib/moblieHack.min.js",
-  "repository": "https://github.com/Char-Ten/moblie-hack.git",
+  "main": "/lib/mobileHack.min.js",
+  "repository": "https://github.com/Char-Ten/mobile-hack.git",
   "author": "Char-Ten<645070346@qq.com>",
   "license": "MIT",
   "devDependencies": {

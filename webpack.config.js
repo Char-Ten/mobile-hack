@@ -11,8 +11,8 @@ module.exports  = (env)=>{
         entry:resolve("src/main.ts"),
         output:{
             path:resolve("lib"),
-            filename:'moblieHack.min.js',
-            library:"moblieHack",
+            filename:'mobileHack.min.js',
+            library:"mobileHack",
             libraryTarget:"umd",
         },
         resolve:{
