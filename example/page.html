@@ -175,14 +175,14 @@
                 </div>
 			</div>
         </div>
-		<script src="../lib/mobileHack.min.js"></script>
+		<script src="../lib/moblieHack.min.js"></script>
 		<script>
             var main = document.getElementById("main")
 			var mask = document.getElementById("mask");
             var dialog1 = new Dialog("dialog1");
             var dialog2 = new Dialog("dialog2");
             var dialog3 = new Dialog("dialog3");
-            mobileHack.hackIosKeyboardBlurBug();
+            moblieHack.hackIosKeyboardBlurBug();
             document.body.onblur=e=>console.log(e.target)
             
             document.body.addEventListener("click",function(e){
@@ -208,10 +208,10 @@
                 mask.style.display = "block";
 
                 
-                if(mobileHack.checkIsLock(main)){
-                    mobileHack.disableUnlock(main);
+                if(moblieHack.checkIsLock(main)){
+                    moblieHack.disableUnlock(main);
                 }
-                mobileHack.lock(main);
+                moblieHack.lock(main);
                 
 
 				setTimeout(function () {
@@ -225,8 +225,8 @@
 				mask.classList.remove("visible");
 				setTimeout(function () {
                     el.style.display = "";
-                    mobileHack.unlock(main)
-                    if(!mobileHack.checkIsLock(main)){
+                    moblieHack.unlock(main)
+                    if(!moblieHack.checkIsLock(main)){
                         mask.style.display = "";
                     }
 				}, 500);
