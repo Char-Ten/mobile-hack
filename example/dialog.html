@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1" />
+		<title>弹窗演示</title>
+		<link rel="stylesheet" href="./style/dialog.css" />
+		<script src="./iconfont/iconfont.js"></script>
+	</head>
+	<body>
+		<div id="main">
+			<header>弹窗演示</header>
+			<section class="menu">
+				<ul>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-cookie"></use>
+						</svg>
+						<p>菜单1</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-pecan"></use>
+						</svg>
+						<p>菜单2</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-avocado"></use>
+						</svg>
+						<p>菜单3</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-pudding"></use>
+						</svg>
+						<p>菜单4</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-strawberry"></use>
+						</svg>
+						<p>菜单5</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-doughnut"></use>
+						</svg>
+						<p>菜单6</p>
+					</li>
+				</ul>
+			</section>
+			<section class="list">
+				<div class="list-tt">新品推荐</div>
+				<ul>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-chips"></use>
+						</svg>
+						<div class="list-ct">
+							<div class="list-name">新品</div>
+							<div class="list-desc">
+								这是一个新品这是一个新品这是一个新品
+							</div>
+						</div>
+						<div class="list-book">
+							<button class="btn btn-book">下单</button>
+						</div>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-popcorn"></use>
+						</svg>
+						<div class="list-ct">
+							<div class="list-name">新品</div>
+							<div class="list-desc">
+								这是一个新品这是一个新品这是一个新品
+							</div>
+						</div>
+						<div class="list-book">
+							<button class="btn btn-book">下单</button>
+						</div>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-bread"></use>
+						</svg>
+						<div class="list-ct">
+							<div class="list-name">新品</div>
+							<div class="list-desc">
+								这是一个新品这是一个新品这是一个新品
+							</div>
+						</div>
+						<div class="list-book">
+							<button class="btn btn-book">下单</button>
+						</div>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-food-pizza"></use>
+						</svg>
+						<div class="list-ct">
+							<div class="list-name">新品</div>
+							<div class="list-desc">
+								这是一个新品这是一个新品这是一个新品
+							</div>
+						</div>
+						<div class="list-book">
+							<button class="btn btn-book">下单</button>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<section class="list">
+				<div class="list-tt">口味调查</div>
+				<p class="question">
+					请问您对本店提供的小吃满意吗？有什么不足的地方值得我们改进的吗？
+				</p>
+				<div class="form">
+					<textarea class="inp"></textarea>
+				</div>
+				<div class="form">
+					<button class="btn btn-submit">提交</button>
+				</div>
+            </section>
+            <section class="list">
+				<div class="list-tt">口味调查</div>
+				<p class="question">
+					请问您对本店提供的小吃满意吗？有什么不足的地方值得我们改进的吗？
+				</p>
+				<div class="form">
+					<textarea class="inp"></textarea>
+				</div>
+				<div class="form">
+					<button class="btn btn-submit">提交</button>
+				</div>
+			</section>
+			<footer>
+				<p>字体图标源自iconfont</p>
+				<p>
+					<a
+						href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=15329"
+						>https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=15329</a
+					>
+				</p>
+			</footer>
+		</div>
+		<div id="mask"></div>
+		<div id="dialog1" class="dialog">
+			<div class="dialog-win">
+				<div class="win-tt">提示</div>
+				<div class="win-ct">库存不足！</div>
+				<div class="win-ft">
+                    <button class="btn btn-dialog-close" onclick="dialog1.close()">知道了</button>
+                </div>
+			</div>
+        </div>
+        <div id="dialog2" class="dialog">
+			<div class="dialog-win">
+				<div class="win-tt">请留下您的昵称</div>
+				<div class="win-ct">
+                    <input class="inp"/>
+                </div>
+				<div class="win-ft">
+                    <button class="btn btn-dialog-close" onclick="dialog2.close(),dialog3.open()">发送</button>
+                </div>
+			</div>
+        </div>
+        <div id="dialog3" class="dialog">
+			<div class="dialog-win">
+				<div class="win-tt">提示</div>
+				<div class="win-ct">发送成功</div>
+				<div class="win-ft">
+                    <button class="btn btn-dialog-close" onclick="dialog3.close()">知道了</button>
+                </div>
+			</div>
+        </div>
+		<script src="../lib/mobileHack.min.js"></script>
+		<script>
+            var main = document.getElementById("main")
+			var mask = document.getElementById("mask");
+            var dialog1 = new Dialog("dialog1");
+            var dialog2 = new Dialog("dialog2");
+            var dialog3 = new Dialog("dialog3");
+            mobileHack.hackIosKeyboardBlurBug();
+            
+            document.body.addEventListener("click",function(e){
+                /**@type {HTMLElement}*/
+                let target = e.target;
+                if(target.classList.contains('btn-book')){
+                    dialog1.open();
+                    return
+                }
+                if(target.classList.contains('btn-submit')){
+                    dialog2.open();
+                }
+
+            })
+
+			function Dialog(id) {
+				/**@type {HTMLElement}*/
+				this.el = document.getElementById(id);
+			}
+			Dialog.prototype.open = function () {
+				var el = this.el;
+				el.style.display = "flex";
+                mask.style.display = "block";
+
+                
+                if(mobileHack.checkIsLock(main)){
+                    mobileHack.disableUnlock(main);
+                }
+                mobileHack.lock(main);
+                
+
+				setTimeout(function () {
+					el.classList.add("visible");
+					mask.classList.add("visible");
+				}, 16);
+			};
+			Dialog.prototype.close = function () {
+				var el = this.el;
+				el.classList.remove("visible");
+				mask.classList.remove("visible");
+				setTimeout(function () {
+                    el.style.display = "";
+                    mobileHack.unlock(main)
+                    if(!mobileHack.checkIsLock(main)){
+                        mask.style.display = "";
+                    }
+				}, 500);
+			};
+		</script>
+	</body>
+</html>
