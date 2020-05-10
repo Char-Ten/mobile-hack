@@ -144,7 +144,77 @@
 					>
 				</p>
 			</footer>
-		</div>
+        </div>
+
+        <div id="drawer1" class="dialog drawer">
+            <div class="mask"></div>
+            <div class="drawer-warpper">
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <div class="drawer-tt">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-food-bread"></use>
+                    </svg>
+                    <div class="drawer-tt__ct">
+                        <div class="drawer-name">套餐A</div>
+                        <div class="drawer-desc">新品*1，可乐*1</div>
+                    </div>
+                </div>
+                <section class="list drawer-ct">
+                    <div class="list-tt">添加备注</div>
+                    <div class="form">
+                        <textarea class="inp"></textarea>
+                    </div>
+                    <div class="form">
+                        <button class="btn btn-submit">提交</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
 		<div id="mask"></div>
 		<div id="dialog1" class="dialog">
 			<div class="dialog-win">
@@ -171,24 +241,27 @@
 				<div class="win-tt">提示</div>
 				<div class="win-ct">发送成功</div>
 				<div class="win-ft">
-                    <button class="btn btn-dialog-close" onclick="dialog3.close()">知道了</button>
+                    <button class="btn btn-dialog-close" onclick="dialog3.close(),drawer1.close()">知道了</button>
                 </div>
 			</div>
         </div>
 		<script src="../lib/mobileHack.min.js"></script>
 		<script>
+            var page = null
             var main = document.getElementById("main")
 			var mask = document.getElementById("mask");
-            var dialog1 = new Dialog("dialog1");
-            var dialog2 = new Dialog("dialog2");
-            var dialog3 = new Dialog("dialog3");
+            var dialog1 = new Dialog("dialog1",true);
+            var dialog2 = new Dialog("dialog2",true);
+            var dialog3 = new Dialog("dialog3",true);
+            var drawer1 = new Drawer("drawer1")
+            page = main;
             mobileHack.hackIosKeyboardBlurBug();
             
             document.body.addEventListener("click",function(e){
                 /**@type {HTMLElement}*/
                 let target = e.target;
                 if(target.classList.contains('btn-book')){
-                    dialog1.open();
+                    drawer1.open();
                     return
                 }
                 if(target.classList.contains('btn-submit')){
@@ -197,39 +270,82 @@
 
             })
 
-			function Dialog(id) {
+			function Dialog(id,usemask) {
 				/**@type {HTMLElement}*/
-				this.el = document.getElementById(id);
+                this.el = document.getElementById(id);
+                this.usemask = usemask||false
 			}
 			Dialog.prototype.open = function () {
-				var el = this.el;
-				el.style.display = "flex";
-                mask.style.display = "block";
+                var el = this.el;
+                var usemask = this.usemask
+                el.style.display = "flex";
+                if(usemask)mask.style.display = "block";
 
                 
-                if(mobileHack.checkIsLock(main)){
-                    mobileHack.disableUnlock(main);
+                if(mobileHack.checkIsLock(page)){
+                    mobileHack.disableUnlock(page);
                 }
-                mobileHack.lock(main);
+                mobileHack.lock(page);
                 
 
 				setTimeout(function () {
 					el.classList.add("visible");
-					mask.classList.add("visible");
+                    if(usemask)mask.classList.add("visible");
 				}, 16);
 			};
 			Dialog.prototype.close = function () {
-				var el = this.el;
+                var el = this.el;
+                var usemask = this.usemask
 				el.classList.remove("visible");
-				mask.classList.remove("visible");
+                if(usemask)mask.classList.remove("visible");
+                
 				setTimeout(function () {
                     el.style.display = "";
-                    mobileHack.unlock(main)
-                    if(!mobileHack.checkIsLock(main)){
-                        mask.style.display = "";
+                    mobileHack.unlock(page)
+                    if(!mobileHack.checkIsLock(page)){
+                        if(usemask)mask.style.display = "";
                     }
 				}, 500);
-			};
+            };
+            
+            function Drawer(id){
+                this.el = document.getElementById(id);
+            }
+            Drawer.prototype.open=function(){
+                var el = this.el;
+                el.style.position = "fixed"
+                el.style.display = "block";
+                
+                if(mobileHack.checkIsLock(page)){
+                    mobileHack.disableUnlock(page);
+                }
+                mobileHack.lock(page);
+                page = el;
+                
+				setTimeout(function () {
+					el.classList.add("visible");
+                }, 16);
+                setTimeout(function(){
+                    el.style.position = "absolute"
+                },500)
+            }
+            Drawer.prototype.close = function () {
+                if(this.el.style.display!=='block'){
+                    return
+                }
+                var el = this.el;
+                if(mobileHack.checkIsLock(el)){
+                    page = main;
+                    mobileHack.unlock(el);
+                }
+                el.classList.remove("visible");
+                
+				setTimeout(function () {
+                    el.style.display = "";
+                    mobileHack.unlock(page)
+				}, 500);
+            };
+
 		</script>
 	</body>
 </html>
